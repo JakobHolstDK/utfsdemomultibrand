@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-      maven 'maven'
+      gradle 'gradle8'
     }
     stages {
         stage('Unit test') {
