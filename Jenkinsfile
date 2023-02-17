@@ -1,16 +1,21 @@
 pipeline {
     agent any
-    tools {
-      jdk 'openjdk17'
-      nodejs 'node16'
-      groovy 'GROOVY3010'
-    }
-    options {
-        disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-    }
 
     stages {
+        stage('Unit test') {
+          steps {
+              script {
+                  sh 'echo "Udfører statisk kodeanalyse og unit tests..."'
+                  sh './gradlew clean check --no-build-cache'
+              }
+          }
+          post {
+              always {
+                  junit keepLongStdio: true, testResults: '**/**/build/test-results/test/*.xml'
+              }
+          }
+        }
+
         stage('Build') {
             steps {
                 sh 'echo "Hello world!"'
