@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
       gradle 'gradle8'
+      jdk 'java17'
     }
     stages {
         stage('Unit test') {
