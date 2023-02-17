@@ -8,7 +8,7 @@ pipeline {
           steps {
               script {
                   sh 'echo "Udfører statisk kodeanalyse og unit tests..."'
-                  sh 'gradlew clean check --no-build-cache'
+                  sh './gradlew clean check --no-build-cache'
               }
           }
           post {
