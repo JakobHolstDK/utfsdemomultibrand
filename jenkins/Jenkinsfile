@@ -1,11 +1,6 @@
 pipeline {
     agent {
         label 'rancher' {
-            podTemplate { 
-               node(demo) {
-                   stage('Run shell') {
-                   sh 'echo hello world'
-                   }
             }
           }
         }
